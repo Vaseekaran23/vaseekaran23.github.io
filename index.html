@@ -20,6 +20,10 @@ html { scroll-behavior: smooth; }
   --bg: #fafafa;
   --accent: #c00;
   --accent-bg: rgba(204,0,0,0.06);
+  --tint: #fff8f8;
+  --accent-pale: #fff0f0;
+  --accent-mid: #e09090;
+  --accent-dark: #a50000;
 }
 
 body {
@@ -54,11 +58,11 @@ nav {
 .nav-links a:hover { color: var(--ink); }
 .nav-resume {
   font-size: 0.78rem; font-weight: 500; color: var(--white);
-  background: var(--ink); padding: 0.4rem 1rem;
+  background: var(--accent); padding: 0.4rem 1rem;
   border-radius: 4px; text-decoration: none;
   transition: background 0.15s;
 }
-.nav-resume:hover { background: #333; }
+.nav-resume:hover { background: var(--accent-dark); }
 
 /* ── HERO ── */
 #hero {
@@ -107,20 +111,20 @@ nav {
 .hero-actions { display: flex; gap: 0.75rem; align-items: center; }
 .btn-primary {
   display: inline-flex; align-items: center; gap: 0.4rem;
-  background: var(--ink); color: var(--white);
+  background: var(--accent); color: var(--white);
   padding: 0.65rem 1.5rem; border-radius: 4px;
   font-size: 0.8rem; font-weight: 500; text-decoration: none;
   transition: background 0.15s;
 }
-.btn-primary:hover { background: #333; }
+.btn-primary:hover { background: var(--accent-dark); }
 .btn-secondary {
   display: inline-flex; align-items: center; gap: 0.4rem;
-  border: 1px solid var(--border); color: var(--ink);
+  border: 1px solid rgba(204,0,0,0.3); color: var(--ink);
   padding: 0.65rem 1.5rem; border-radius: 4px;
   font-size: 0.8rem; font-weight: 500; text-decoration: none;
-  transition: border-color 0.15s;
+  transition: border-color 0.15s, color 0.15s;
 }
-.btn-secondary:hover { border-color: var(--mid); }
+.btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
 
 /* PHOTO */
 .hero-right {
@@ -128,10 +132,11 @@ nav {
   flex-shrink: 0;
 }
 .photo-circle {
-  width: 220px; height: 220px; border-radius: 50%;
+  width: 280px; height: 280px; border-radius: 50%;
   overflow: hidden;
-  border: 1px solid var(--border);
-  background: var(--bg);
+  border: 2px solid var(--accent-mid);
+  background: var(--tint);
+  box-shadow: 0 0 0 6px var(--accent-pale), 0 4px 28px rgba(165,0,0,0.1);
 }
 .photo-circle img {
   width: 100%; height: 100%; object-fit: cover;
@@ -143,7 +148,7 @@ nav {
 .logo-strip-wrap {
   padding: 1.75rem 3rem;
   border-bottom: 1px solid var(--border);
-  background: var(--bg);
+  background: var(--tint);
   opacity: 0; animation: fadeUp 0.6s ease 0.7s forwards;
 }
 .logo-strip-inner {
@@ -170,7 +175,7 @@ nav {
 
 /* ── SECTIONS ── */
 .section { padding: 5rem 3rem; border-bottom: 1px solid var(--border); }
-.section:nth-child(even) { background: var(--bg); }
+.section:nth-child(even) { background: var(--tint); }
 .section-inner { max-width: 1100px; margin: 0 auto; }
 .section-header { margin-bottom: 3rem; }
 .section-label {
@@ -192,12 +197,12 @@ nav {
 .about-text p strong { color: var(--ink2); font-weight: 500; }
 .skill-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 1.5rem; }
 .skill-tag {
-  font-size: 0.7rem; font-weight: 400; color: var(--mid);
-  background: var(--white); border: 1px solid var(--border);
+  font-size: 0.7rem; font-weight: 400; color: var(--accent);
+  background: var(--accent-pale); border: 1px solid var(--accent-mid);
   padding: 0.25rem 0.7rem; border-radius: 3px;
-  transition: color 0.15s, border-color 0.15s;
+  transition: color 0.15s, border-color 0.15s, background 0.15s;
 }
-.skill-tag:hover { color: var(--ink); border-color: var(--mid); }
+.skill-tag:hover { background: var(--accent); color: var(--white); border-color: var(--accent); }
 .about-facts { display: flex; flex-direction: column; gap: 0; }
 .fact-row {
   display: flex; flex-direction: column;
@@ -206,7 +211,7 @@ nav {
 .fact-row:first-child { border-top: 1px solid var(--border); }
 .fact-label {
   font-size: 0.68rem; font-weight: 500; letter-spacing: 0.08em;
-  text-transform: uppercase; color: var(--light-mid); margin-bottom: 0.2rem;
+  text-transform: uppercase; color: var(--accent); margin-bottom: 0.2rem;
 }
 .fact-value { font-size: 0.9rem; font-weight: 500; color: var(--ink); }
 .fact-sub { font-size: 0.8rem; color: var(--mid); font-weight: 300; margin-top: 0.1rem; }
@@ -227,7 +232,7 @@ nav {
 }
 .exp-meta-logo img { width: 26px; height: 26px; object-fit: contain; }
 .exp-period { font-size: 0.75rem; color: var(--light-mid); margin-bottom: 0.1rem; }
-.exp-company-name { font-size: 0.8rem; font-weight: 500; color: var(--mid); }
+.exp-company-name { font-size: 0.8rem; font-weight: 500; color: var(--accent); }
 .exp-role {
   font-size: 1rem; font-weight: 600; color: var(--ink);
   letter-spacing: -0.01em; margin-bottom: 0.15rem;
@@ -240,7 +245,7 @@ nav {
 }
 .exp-points li::before {
   content: '—'; position: absolute; left: 0;
-  color: var(--border); font-size: 0.7rem; top: 0.05em;
+  color: var(--accent-mid); font-size: 0.7rem; top: 0.05em;
 }
 .exp-badge {
   display: inline-flex; align-items: center;
@@ -265,7 +270,7 @@ nav {
 }
 .project-card:nth-child(2n) { border-right: none; }
 .project-card:nth-last-child(-n+2) { border-bottom: none; }
-.project-card:hover { background: var(--bg); }
+.project-card:hover { background: var(--accent-pale); }
 .project-tag {
   font-size: 0.67rem; font-weight: 500; letter-spacing: 0.08em;
   text-transform: uppercase; color: var(--light-mid); margin-bottom: 0.6rem;
@@ -293,7 +298,7 @@ nav {
 .award-body { flex: 1; }
 .award-title { font-size: 0.88rem; font-weight: 500; color: var(--ink); margin-bottom: 0.15rem; }
 .award-desc { font-size: 0.8rem; color: var(--mid); font-weight: 300; }
-.award-year { font-size: 0.75rem; color: var(--light-mid); flex-shrink: 0; white-space: nowrap; }
+.award-year { font-size: 0.75rem; color: var(--accent); flex-shrink: 0; white-space: nowrap; }
 
 /* ── CONTACT ── */
 #contact { background: var(--ink); border-bottom: none; }
@@ -319,12 +324,12 @@ a.contact-item-val:hover { color: var(--white); }
 .resume-download {
   display: inline-flex; align-items: center; gap: 0.5rem;
   margin-top: 2.5rem;
-  background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15);
-  color: rgba(255,255,255,0.8); padding: 0.7rem 1.25rem; border-radius: 4px;
+  background: var(--accent); border: 1px solid var(--accent);
+  color: var(--white); padding: 0.7rem 1.25rem; border-radius: 4px;
   font-size: 0.8rem; font-weight: 500; text-decoration: none;
-  transition: background 0.15s, color 0.15s;
+  transition: background 0.15s;
 }
-.resume-download:hover { background: rgba(255,255,255,0.14); color: var(--white); }
+.resume-download:hover { background: var(--accent-dark); border-color: var(--accent-dark); }
 
 /* ── FOOTER ── */
 footer {
@@ -356,7 +361,7 @@ footer {
   #hero { padding: 56px 1.25rem 0; }
   .hero-inner { grid-template-columns: 1fr; gap: 2.5rem; padding: 3.5rem 0; }
   .hero-right { display: flex; justify-content: center; }
-  .photo-circle { width: 160px; height: 160px; }
+  .photo-circle { width: 200px; height: 200px; }
   .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
   .exp-item { grid-template-columns: 1fr; gap: 0.5rem; }
   .projects-grid { grid-template-columns: 1fr; }
@@ -706,12 +711,6 @@ footer {
             <div class="contact-item-label">Email</div>
             <a href="mailto:vaseekarananbuselvan@gmail.com" class="contact-item-val">
               vaseekarananbuselvan@gmail.com
-            </a>
-          </div>
-          <div>
-            <div class="contact-item-label">GitHub</div>
-            <a href="https://vaseekaran23.github.io" target="_blank" class="contact-item-val">
-              vaseekaran23.github.io
             </a>
           </div>
           <div>
